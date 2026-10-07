@@ -1,6 +1,19 @@
+import { useState } from 'react'
+import Login from './Login'
 import './App.css'
 
 function App() {
+  const [accessGranted, setAccessGranted] = useState(false)
+  const [settingsOpen, setSettingsOpen] = useState(false)
+
+  if (!accessGranted) {
+    return (
+      <Login
+        onAccess={() => setAccessGranted(true)}
+      />
+    )
+  }
+
   return (
     <main className="site">
       <nav className="navbar">
@@ -14,9 +27,53 @@ function App() {
           <a href="#contacto">Contacto</a>
         </div>
 
-        <a className="nav-button" href="#reserva">
-          RESERVAR
-        </a>
+        <div className="navbar-actions">
+          <a className="nav-button" href="#reserva">
+            RESERVAR
+          </a>
+
+          <div className="settings-container">
+            <button
+              className={`settings-button ${settingsOpen ? 'active' : ''}`}
+              onClick={() => setSettingsOpen(!settingsOpen)}
+              aria-label="Abrir configuración"
+            >
+              ⚙
+            </button>
+
+            {settingsOpen && (
+              <div className="settings-menu">
+                <button className="settings-item">
+                  <span>👤</span>
+                  EDITAR PERFIL
+                </button>
+
+                <button className="settings-item">
+                  <span>🔒</span>
+                  CAMBIAR CONTRASEÑA
+                </button>
+
+                <button className="settings-item">
+                  <span>⚙</span>
+                  CONFIGURACIÓN
+                </button>
+
+                <div className="settings-divider"></div>
+
+                <button
+                  className="settings-item logout-item"
+                  onClick={() => {
+                    setSettingsOpen(false)
+                    setAccessGranted(false)
+                  }}
+                >
+                  <span>🚪</span>
+                  CERRAR SESIÓN
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
       </nav>
 
       <section className="hero" id="inicio">
@@ -141,7 +198,9 @@ function App() {
           Próximamente podrás solicitar tu hora directamente desde aquí.
         </p>
 
-        <button className="primary-button">RESERVAR HORA</button>
+        <button className="primary-button">
+          RESERVAR HORA
+        </button>
       </section>
 
       <footer id="contacto">

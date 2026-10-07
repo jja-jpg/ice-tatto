@@ -1,0 +1,473 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #050505;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================
+   PANTALLA PRINCIPAL
+========================= */
+
+.login-screen {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at center,
+      #202020 0%,
+      #111 38%,
+      #050505 75%
+    );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Textura metálica */
+
+.login-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      rgba(255,255,255,.025) 0px,
+      rgba(255,255,255,.025) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  opacity: .35;
+  pointer-events: none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.login-header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 40px;
+}
+
+/* Logo pequeño */
+
+.small-logo {
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #d8d8d8;
+  text-shadow:
+    0 1px 0 #fff,
+    0 2px 5px rgba(0,0,0,.8);
+}
+
+/* =========================
+   REDES SOCIALES
+========================= */
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.social-links a {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #4a4a4a;
+  border-radius: 10px;
+  background:
+    linear-gradient(
+      145deg,
+      #191919,
+      #070707
+    );
+  color: #aaa;
+  transition:
+    .3s ease,
+    box-shadow .3s ease;
+  text-decoration: none;
+}
+
+.social-links svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  transition: .3s ease;
+}
+
+.social-links .instagram-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.social-links a:hover {
+  color: #fff;
+  border-color: #fff;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 8px rgba(255,255,255,.8),
+    0 0 20px rgba(255,255,255,.3),
+    inset 0 0 12px rgba(255,255,255,.05);
+}
+
+.social-links a:active {
+  transform: scale(.92);
+  box-shadow:
+    0 0 14px #fff,
+    0 0 30px rgba(255,255,255,.6);
+}
+
+.whatsapp-link svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
+.login-content {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 80px;
+}
+
+/* =========================
+   LOGO PRINCIPAL
+========================= */
+
+.main-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: .8;
+  font-weight: 900;
+  letter-spacing: 8px;
+  margin-bottom: 35px;
+  user-select: none;
+}
+
+.main-logo span {
+  font-size: clamp(70px, 10vw, 150px);
+  color: #cfcfcf;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #cfcfcf 25%,
+      #777 50%,
+      #dedede 70%,
+      #555 100%
+    );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter:
+    drop-shadow(0 3px 2px #000)
+    drop-shadow(0 0 10px rgba(255,255,255,.12));
+}
+
+/* =========================
+   TITULO
+========================= */
+
+.access-title {
+  font-size: 13px;
+  letter-spacing: 6px;
+  color: #888;
+  margin: 0 0 25px;
+}
+
+/* =========================
+   OPCIONES
+========================= */
+
+.main-options {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.main-option {
+  position: relative;
+  width: 100%;
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  background:
+    linear-gradient(
+      145deg,
+      #1b1b1b,
+      #090909
+    );
+  border: 1px solid #3b3b3b;
+  border-radius: 12px;
+  color: #aaa;
+  cursor: pointer;
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    box-shadow .3s ease,
+    color .3s ease,
+    background .3s ease;
+  overflow: hidden;
+}
+
+.main-option::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,255,255,.08),
+      transparent
+    );
+  transform: skewX(-20deg);
+  transition: left .7s ease;
+}
+
+.main-option:hover::before {
+  left: 140%;
+}
+
+.main-option:hover {
+  color: #fff;
+  border-color: #aaa;
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 10px rgba(255,255,255,.4),
+    0 0 25px rgba(255,255,255,.12),
+    inset 0 0 15px rgba(255,255,255,.04);
+}
+
+.main-option:active {
+  transform: scale(.98);
+  box-shadow:
+    0 0 15px rgba(255,255,255,.7);
+}
+
+/* Número */
+
+.option-number {
+  width: 40px;
+  font-size: 11px;
+  color: #555;
+  letter-spacing: 2px;
+}
+
+/* Texto */
+
+.option-text {
+  flex: 1;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+/* Flecha */
+
+.option-arrow {
+  font-size: 20px;
+  color: #777;
+  transition:
+    transform .3s ease,
+    color .3s ease;
+}
+
+.main-option:hover .option-arrow {
+  color: #fff;
+  transform: translateX(6px);
+}
+
+/* =========================
+   INPUTS DE REGISTRO
+========================= */
+
+.register-input {
+  display: block;
+  width: 100%;
+  height: 58px;
+  box-sizing: border-box;
+  padding: 0 18px;
+  margin: 0;
+  background: #0b0b0b;
+  border: 1px solid #3a3a3a;
+  border-radius: 10px;
+  color: #ffffff;
+  caret-color: #ffffff;
+  outline: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: normal;
+  appearance: none;
+  -webkit-appearance: none;
+  transition:
+    border-color .25s ease,
+    background-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.register-input:not(:placeholder-shown) {
+  color: #ffffff;
+}
+
+.register-input::placeholder {
+  color: #666666;
+  opacity: 1;
+  letter-spacing: 1px;
+}
+
+.register-input:hover {
+  border-color: #555555;
+  background: #0d0d0d;
+}
+
+.register-input:focus {
+  border-color: #aaaaaa;
+  background: #0d0d0d;
+  outline: none;
+  box-shadow:
+    0 0 8px rgba(255,255,255,.25),
+    0 0 20px rgba(255,255,255,.08),
+    inset 0 0 10px rgba(255,255,255,.025);
+}
+
+.register-input:focus::placeholder {
+  color: #555555;
+  opacity: .7;
+}
+
+/* =========================
+   OJITO CONTRASEÑA
+========================= */
+
+.password-eye-button {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    color .25s ease,
+    transform .25s ease;
+}
+
+.password-eye-button:hover {
+  color: #fff;
+}
+
+.password-eye-button:active {
+  transform: translateY(-50%) scale(.9);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.login-footer-text {
+  margin-top: 35px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #444;
+  text-align: center;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 700px) {
+
+  .login-header {
+    padding: 22px;
+  }
+
+  .main-logo span {
+    font-size: 65px;
+  }
+
+  .main-options {
+    max-width: 95%;
+  }
+
+  .main-option {
+    min-height: 62px;
+  }
+
+  .option-text {
+    font-size: 11px;
+  }
+
+  .login-content {
+    padding-top: 20px;
+  }
+
+  .register-input {
+    height: 54px;
+  }
+}
+
+@media (max-width: 450px) {
+
+  .main-logo span {
+    font-size: 52px;
+    letter-spacing: 5px;
+  }
+
+  .access-title {
+    letter-spacing: 4px;
+  }
+
+  .main-option {
+    padding: 0 15px;
+  }
+
+  .option-number {
+    width: 32px;
+  }
+
+  .option-text {
+    font-size: 10px;
+    letter-spacing: 1.3px;
+  }
+}
